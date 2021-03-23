@@ -1,0 +1,15 @@
+version: 2.1
+orbs:
+  aws-s3: circleci/aws-s3@2.0.0
+
+jobs:
+  deploy_s3:
+    steps:
+       - aws-s3/copy:
+          from: ./index.html
+          to: 's3://my-s3-bucket-name'
+
+workflows:
+  deployment:
+    jobs:
+      - deploy_s3
